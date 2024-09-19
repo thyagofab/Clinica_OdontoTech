@@ -23,15 +23,15 @@ int main(){
             break;
 
         case 4:
-            printf("opcao 4\n");
+            adicionar_paciente();
             break;
 
         case 5: 
-            printf("opcao 5\n");
+            atender_paciente();
             break;
 
         case 6:
-            printf("opcao 6\n");
+            buscar_paciente();
             break;
 
         case 7:
@@ -40,6 +40,8 @@ int main(){
 
         default:
             printf("opcao invalida!\n");
+            sleep(1);
+            system("cls");
             break;
         }
     }while (opcao != 7);

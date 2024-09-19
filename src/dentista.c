@@ -1,5 +1,5 @@
 #include "../include/dentista.h"
-#include "../src/sistema.c"
+#include "paciente.c"
 
 void adicionar_dentista(){
     menu_dentista();
