@@ -1,12 +1,23 @@
-<img align="right" width="50" height="70" src="https://assecom.ufersa.edu.br/wp-content/uploads/sites/24/2014/09/PNG-bras%C3%A3o-Ufersa.png"><br>
+<img align="right" width="80" height="80" src="https://assecom.ufersa.edu.br/wp-content/uploads/sites/24/2014/09/PNG-bras%C3%A3o-Ufersa.png">
 
 <h1 align="center">Clínica Odontológica-OdontoTech</h1>
 
+<br> 
+
+# Navegação do Projeto:
+- [Proposta do Projeto](#proposta-do-projeto)
+- [Funcionalidades do Projeto](#funcionalidades-do-projeto)
+- [Estrutura do Projeto](#estrutura-do-projeto)
+- [Colaboradores](#colaboradores)
+
+
 # Proposta do Projeto
 
-### Nosso projeto consiste em criar um sistema de gerenciamento de uma clínica odontológica. Com ele será possível organizar os diversos dentistas ofertados por nós e seus respectivos pacientes.
+<p> O objetivo deste projeto é desenvolver um sistema de gerenciamento para clínicas odontológicas, facilitando a organização e o controle de dentistas e pacientes. A plataforma permitirá o cadastro e a gestão dos profissionais da clínica, além de fornecer uma interface eficiente para atender pacientes de forma organizada. Com isso, busca-se otimizar o processo de agendamento, atendimento e gestão de informações, oferecendo uma solução integrada para melhorar a eficiência operacional e a qualidade do serviço prestado.
+</p>
 
-<h2 id="function" style="font-weight: bold; font-size: 2rem">Funcionalidades do Projeto</h2>
+
+# Funcionalidades do Projeto
 
 
 ```
@@ -19,7 +30,7 @@
 ```
 
 # Estrutura do Projeto
-#### A estrutura do projeto está organizada da seguinte forma:
+### A estrutura do projeto está organizada da seguinte forma:
 ```
 Clínica_OdontoTech/
 │
@@ -40,3 +51,43 @@ Clínica_OdontoTech/
 ├── 🚫 .gitignore
 └── 📄 README.md                 
 ```
+
+  # Colaboradores
+  Um agradecimento especial a todas as pessoas que contribuíram para este projeto.
+  <table>
+    <tr>
+      <td align="center">
+        <a href="#">
+          <img src="https://avatars.githubusercontent.com/u/143232809?v=4" width="100px;" alt="Thyago Profile Picture"/><br>
+          <sub>
+            <a href="https://github.com/thyagofab"><b>Thyago Fabricio</b></a>
+          </sub>
+        </a>
+      </td>
+      <td align="center">
+        <a href="#">
+          <img src="https://avatars.githubusercontent.com/u/146228058?v=4" width="100px;" alt="Elon Musk Picture"/><br>
+          <sub>
+            <a href="https://github.com/ViniciusOliver13"><b>Antonio Vinícius</b></a>
+          </sub>
+        </a>
+      </td>
+      <td align="center">
+        <a href="#">
+          <img src="https://avatars.githubusercontent.com/u/140117398?v=4" width="100px;" alt="Foto do Steve Jobs"/><br>
+          <sub>
+            <a href="https://github.com/marceloDev0"><b>Marcelo Augusto</b></a>
+          </sub>
+        </a>
+      </td>
+      <td align="center">
+        <a href="#">
+          <img src="https://avatars.githubusercontent.com/u/146675089?v=4" width="100px;" alt="Foto do Steve Jobs"/><br>
+            <sub>
+              <a href="https://github.com/dinarteefilho"><b>Dinarte Filho</b></a>
+            </sub>
+        </a>
+      </td>
+    </tr>
+  </table>
+</div>
