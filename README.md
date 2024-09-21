@@ -4,11 +4,14 @@
 
 <br> 
 
-# Navegação do Projeto:
+## Navegação do Projeto:
+
 - [Proposta do Projeto](#proposta-do-projeto)
 - [Funcionalidades do Projeto](#funcionalidades-do-projeto)
-- [Estrutura do Projeto](#estrutura-do-projeto)
+- [Estrutura de Diretórios](#estrutura-de-diretórios-do-projeto)
+- [Compilar o Código](#compilar-o-código)
 - [Colaboradores](#colaboradores)
+
 
 
 # Proposta do Projeto
@@ -16,6 +19,24 @@
 <p> O objetivo deste projeto é desenvolver um sistema de gerenciamento para clínicas odontológicas, facilitando a organização e o controle de dentistas e pacientes. A plataforma permitirá o cadastro e a gestão dos profissionais da clínica, além de fornecer uma interface eficiente para atender pacientes de forma organizada. Com isso, busca-se otimizar o processo de agendamento, atendimento e gestão de informações, oferecendo uma solução integrada para melhorar a eficiência operacional e a qualidade do serviço prestado.
 </p>
 
+
+# Compilar o código
+
+### Gerar Arquivo Objeto
+
+```
+gcc -c src/sistema.c -o sistema.o
+gcc -c src/paciente.c -o paciente.o
+gcc -c src/dentista.c -o dentista.o
+```
+
+### Linkar Objetos e Gerar o Executável
+
+``` 
+
+gcc dentista.o paciente.o sistema.o main.o -o Nome-do-executavel
+
+```
 
 # Funcionalidades do Projeto
 
@@ -29,8 +50,10 @@
 ✅ Buscar paciente
 ```
 
-# Estrutura do Projeto
-### A estrutura do projeto está organizada da seguinte forma:
+# Estrutura de Diretórios do Projeto
+
+### A organização dos diretórios e arquivos do projeto é a seguinte:
+
 ```
 Clínica_OdontoTech/
 │
