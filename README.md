@@ -58,7 +58,7 @@ Clínica_OdontoTech/
     <tr>
       <td align="center">
         <a href="#">
-          <img src="https://avatars.githubusercontent.com/u/143232809?v=4" width="100px;" alt="Thyago Profile Picture"/><br>
+          <img src="https://avatars.githubusercontent.com/u/143232809?v=4" width="100px;" alt="foto de Thyago"/><br>
           <sub>
             <a href="https://github.com/thyagofab"><b>Thyago Fabricio</b></a>
           </sub>
@@ -66,7 +66,7 @@ Clínica_OdontoTech/
       </td>
       <td align="center">
         <a href="#">
-          <img src="https://avatars.githubusercontent.com/u/146228058?v=4" width="100px;" alt="Elon Musk Picture"/><br>
+          <img src="https://avatars.githubusercontent.com/u/146228058?v=4" width="100px;" alt="Foto de Vinícius"/><br>
           <sub>
             <a href="https://github.com/ViniciusOliver13"><b>Antonio Vinícius</b></a>
           </sub>
@@ -74,7 +74,7 @@ Clínica_OdontoTech/
       </td>
       <td align="center">
         <a href="#">
-          <img src="https://avatars.githubusercontent.com/u/140117398?v=4" width="100px;" alt="Foto do Steve Jobs"/><br>
+          <img src="https://avatars.githubusercontent.com/u/140117398?v=4" width="100px;" alt="Foto de Marcelo"/><br>
           <sub>
             <a href="https://github.com/marceloDev0"><b>Marcelo Augusto</b></a>
           </sub>
@@ -82,7 +82,7 @@ Clínica_OdontoTech/
       </td>
       <td align="center">
         <a href="#">
-          <img src="https://avatars.githubusercontent.com/u/146675089?v=4" width="100px;" alt="Foto do Steve Jobs"/><br>
+          <img src="https://avatars.githubusercontent.com/u/146675089?v=4" width="100px;" alt="Foto de Dinarte"/><br>
             <sub>
               <a href="https://github.com/dinarteefilho"><b>Dinarte Filho</b></a>
             </sub>
