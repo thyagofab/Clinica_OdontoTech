@@ -2,6 +2,8 @@
 
 int main(){
 
+    Heap *heap = criarHeap();
+    TabelaHash *tabela = criarTabelaHash(10);
     int opcao;
 
     do{
@@ -11,11 +13,12 @@ int main(){
         switch (opcao){
 
         case 1:
-            adicionar_dentista();
+            adicionar_dentista(tabela);
             break;
             
         case 2:
             buscar_dentista();
+            mostrar_dentistas(tabela);
             break;
 
         case 3:
@@ -23,11 +26,11 @@ int main(){
             break;
 
         case 4:
-            adicionar_paciente();
+            adicionar_paciente(heap);
             break;
 
         case 5: 
-            atender_paciente();
+            atender_paciente(heap);
             break;
 
         case 6:
@@ -36,14 +39,15 @@ int main(){
 
         case 7:
             printf("Saindo...\n");
+            mostrar_pacientes(heap);
             break;
 
         default:
             printf("opcao invalida!\n");
-            sleep(1);
             system("cls");
             break;
         }
+        
     }while (opcao != 7);
     
     return 0;
