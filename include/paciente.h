@@ -12,23 +12,23 @@ typedef struct heap{
     int tamanhoAtual;     
 } Heap;
 
-void adicionar_paciente(Heap *heap);
+void *adicionar_paciente(Heap *heap);
 
 void buscar_paciente();
 
 void atender_paciente(Heap *heap);
 
-Heap *criarHeap();
+Heap *criar_Heap();
 
-void trocarPacientes(Paciente** a, Paciente** b); 
+void trocar_Pacientes(Paciente **a, Paciente **b); 
 
-void heapifyAcima(Heap* heap, int index);
+void heapify_Acima(Heap *heap, int index);
 
-void heapifyAbaixo(Heap* heap, int index); 
+void heapify_Abaixo(Heap *heap, int index); 
 
-void inserirHeap(Heap* heap, Paciente* paciente); 
+void inserir_Heap(Heap* heap, Paciente *paciente); 
 
 // Função criada para testes
 void mostrar_pacientes(Heap* heap);
 
-Paciente* removerPaciente(Heap* heap); 
+Paciente *remover_paciente(Heap* heap); 

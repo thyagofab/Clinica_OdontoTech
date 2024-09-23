@@ -31,7 +31,7 @@ void menu_buscar_dentista(){
     printf("=========================\n");
     printf("|    BUSCAR DENTISTA    |\n");
     printf("=========================\n");
-    printf("|    NOME:  xxxxxxxxx   |\n");
+    printf("|    CPF:  xxxxxxxx     |\n");
     printf("=========================\n");
     system("pause");
     system("cls");

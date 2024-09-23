@@ -13,13 +13,15 @@ typedef struct{
 
 Dentista *adicionar_dentista();
 
-TabelaHash *criarTabelaHash(int tamanho);
+TabelaHash *criar_TabelaHash(int tamanho);
 
 int hash(char *chave, int tamanho);
 
-void inserirDentista(TabelaHash *tabela, Dentista *dentista); 
+void inserir_dentista(TabelaHash *tabela, Dentista *dentista); 
 
-void buscar_dentista();
+void adicionar_paciente_dentista(TabelaHash *tabela);
+
+void *buscar_dentista(TabelaHash* tabela);
 
 void remover_dentista();
 
