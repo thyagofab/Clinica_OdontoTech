@@ -1,6 +1,7 @@
+#include "../include/sistema.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include "../include/sistema.h"
+#include <string.h>
 
 void menu(){
     printf("[1] - adicionar dentista\n");
@@ -30,7 +31,7 @@ void menu_buscar_dentista(){
     printf("=========================\n");
     printf("|    BUSCAR DENTISTA    |\n");
     printf("=========================\n");
-    printf("|    NOME:  xxxxxxxxx   |\n");
+    printf("|    CPF:  xxxxxxxx     |\n");
     printf("=========================\n");
     system("pause");
     system("cls");
@@ -79,4 +80,30 @@ void menu_atenter_paciente(){
     printf("=========================\n");
     system("pause");
     system("cls");
+}
+
+int definir_prioridade(){
+    int opcao;
+    printf("Selecione a prioridade do paciente:\n");
+    printf("[1] - Normal\n");
+    printf("[2] - Preferencial\n");
+    printf("[3] - Emergencial\n");
+    scanf(" %d", &opcao);
+
+    switch (opcao){
+        case 1:
+            return 1;
+            break;
+        case 2:
+            return 2;
+            break;
+        case 3:
+            return 3;
+            break;
+        default:
+            printf("Opcao invalida!\n");
+            break;
+    }
+    
+    return -1;
 }
