@@ -1,7 +1,9 @@
-#include "dentista.c"
+#include "../include/dentista.h"
+
+#define TAM 100
 
 int main(){
-
+    TabelaHash *tabela = criar_TabelaHash(TAM);
     int opcao;
 
     do{
@@ -11,39 +13,43 @@ int main(){
         switch (opcao){
 
         case 1:
-            adicionar_dentista();
+            adicionar_dentista(tabela);
             break;
             
         case 2:
-            buscar_dentista();
+            buscar_dentista(tabela);
             break;
 
         case 3:
-            remover_dentista();
+            remover_dentista(tabela);
             break;
 
         case 4:
-            adicionar_paciente();
+            adicionar_paciente_dentista(tabela);
             break;
 
         case 5: 
-            atender_paciente();
+            atender_paciente_dentista(tabela);
             break;
 
         case 6:
-            buscar_paciente();
+            buscar_paciente();  // Não implementada
             break;
 
         case 7:
             printf("Saindo...\n");
             break;
+            
+        case 8:
+            mostrar_dentistas(tabela);  // Função criada para testes: mostrar dentistas e seus pacientes
+            break;
 
         default:
             printf("opcao invalida!\n");
-            sleep(1);
             system("cls");
             break;
         }
+        
     }while (opcao != 7);
     
     return 0;

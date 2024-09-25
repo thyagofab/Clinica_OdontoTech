@@ -11,3 +11,5 @@ void menu_paciente();
 void menu_buscar_paciente();
 
 void menu_atenter_paciente();
+
+int definir_prioridade();
