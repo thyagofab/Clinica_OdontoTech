@@ -77,7 +77,8 @@ Clínica_OdontoTech/
 └── 📄 README.md                 
 ```
 
-# Implementação:
+# Implementação
+
 
 ### Heap
 <p>A estrutura Dentista é usada para representar um dentista no sistema. Ela contém informações como o nome, CPF, especialidade do dentista e um ponteiro para uma fila de pacientes, que é implementada como um Heap. A fila de pacientes organiza os pacientes de acordo com algum critério de prioridade</p>
