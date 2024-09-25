@@ -125,27 +125,15 @@ void atender_paciente_dentista(TabelaHash *tabela){
 }
 
 void mostrar_dentistas(TabelaHash *tabela){
-    int contador = 0;
-
     for (int i = 0; i < tabela->tamanho; i++){
         if (tabela->dentistas[i] != NULL){
-            contador++;
-
-            if (contador == 1){
-                printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
-                printf("   Dentistas Cadastrados\n");
-                printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
-            }
-
-            printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
+            printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
+            printf("========== DENTISTA  ==========\n");
             printf("Nome: %s\n", tabela->dentistas[i]->nome);
             printf("CPF: %s\n", tabela->dentistas[i]->cpf);
             printf("Especialidade: %s\n", tabela->dentistas[i]->especialidade);
-            printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
+            printf("===============================\n");
             mostrar_pacientes(tabela->dentistas[i]->filaPacientes);
         }
-    }
-    if (contador == 0){
-        printf("Nenhum dentista cadastrado!\n");
     }
 }
