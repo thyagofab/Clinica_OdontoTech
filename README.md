@@ -28,13 +28,15 @@
 gcc -c src/sistema.c -o sistema.o
 gcc -c src/paciente.c -o paciente.o
 gcc -c src/dentista.c -o dentista.o
+gcc -c src/main.c -o main.o
+
 ```
 
 ### Linkar Objetos e Gerar o Executável
 
 ``` 
 
-gcc dentista.o paciente.o sistema.o main.o -o Nome-do-executavel
+gcc sistema.o paciente.o dentista.o main.o -o Nome-do-executavel
 
 ```
 
