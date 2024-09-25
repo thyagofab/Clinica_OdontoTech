@@ -1,5 +1,8 @@
 #include "../include/paciente.h"
-#include "sistema.c"
+#include "../include/sistema.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 void *adicionar_paciente(Heap *heap){
     char nome[100];
@@ -8,11 +11,10 @@ void *adicionar_paciente(Heap *heap){
     Prioridade prioridade;
 
     menu_paciente();
-
     printf("Nome do paciente: ");
-    scanf("%s", nome);
+    scanf(" %[^\n]", nome);
     printf("Telefone do paciente: ");
-    scanf("%s", telefone);
+    scanf(" %[^\n]", telefone);
 
     prioridadeEscolhida = definir_prioridade();
 
@@ -30,7 +32,6 @@ void buscar_paciente(){
 }
 
 void atender_paciente(Heap *heap){
-    menu_atenter_paciente();
     remover_paciente(heap);
 }
 
@@ -100,7 +101,7 @@ void inserir_Heap(Heap *heap, Paciente *paciente){
 }
 
 void mostrar_pacientes(Heap *heap){
-    printf("Pacientes na fila de espera:\n");
+    int i;
 
     if (heap->tamanhoAtual == 0){
         printf("Nenhum paciente na fila de espera.\n");
@@ -108,15 +109,19 @@ void mostrar_pacientes(Heap *heap){
         return;
     }
     
-    for (int i = 0; i < heap->tamanhoAtual; i++) {
+    printf("Pacientes na fila de espera: %d\n", heap->tamanhoAtual);
+    printf("=-=-=-=-=-PACIENTES-=-=-=-=-=-\n");
+    for (i = 0; i < heap->tamanhoAtual; i++){
         printf("Nome: %s, Telefone: %s, Prioridade: %d\n", heap->pacientes[i]->nome, heap->pacientes[i]->telefone, heap->pacientes[i]->prioridade);
+        printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
     }
     system("pause");
+    printf("\n");
 }
 
 Paciente *remover_paciente(Heap *heap) {
     if (heap->tamanhoAtual == 0) {
-        printf("Erro: Heap vazia. Não há pacientes para remover.\n");
+        printf("Não há pacientes para remover.\n");
         return NULL;
     }
 
@@ -126,5 +131,6 @@ Paciente *remover_paciente(Heap *heap) {
 
     heapify_Abaixo(heap, 0);
 
+    printf("Paciente %s foi atendido!\n", pacienteRemovido->nome);
     return pacienteRemovido;
 }

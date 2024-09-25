@@ -1,4 +1,5 @@
-#include "dentista.c"
+#include "../include/dentista.h"
+
 #define TAM 100
 
 int main(){
@@ -16,11 +17,11 @@ int main(){
             break;
             
         case 2:
-            mostrar_dentistas(tabela);  // Função criada para testes: mostrar dentistas e seus pacientes
+            buscar_dentista(tabela);
             break;
 
         case 3:
-            remover_dentista(); // Não implementada
+            remover_dentista(tabela);
             break;
 
         case 4:
@@ -28,15 +29,19 @@ int main(){
             break;
 
         case 5: 
-            //atender_paciente(heap);
+            atender_paciente_dentista(tabela);
             break;
 
         case 6:
-            buscar_paciente();
+            buscar_paciente();  // Não implementada
             break;
 
         case 7:
             printf("Saindo...\n");
+            break;
+            
+        case 8:
+            mostrar_dentistas(tabela);  // Função criada para testes: mostrar dentistas e seus pacientes
             break;
 
         default:
