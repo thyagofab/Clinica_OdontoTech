@@ -1,5 +1,8 @@
 #include "../include/paciente.h"
-#include "sistema.c"
+#include "../include/sistema.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 void *adicionar_paciente(Heap *heap){
     char nome[100];

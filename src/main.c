@@ -1,4 +1,5 @@
-#include "dentista.c"
+#include "../include/dentista.h"
+
 #define TAM 100
 
 int main(){

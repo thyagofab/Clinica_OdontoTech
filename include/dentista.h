@@ -1,4 +1,4 @@
-#include "../src/paciente.c"
+#include "../include/paciente.h"
 
 typedef struct{
     char nome[100];
