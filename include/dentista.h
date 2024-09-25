@@ -1,3 +1,5 @@
+#ifndef DENTISTA_H
+#define DENTISTA_H
 #include "../include/paciente.h"
 
 typedef struct{
@@ -44,6 +46,9 @@ void adicionar_paciente_dentista(TabelaHash *tabela);
 /* Função que busca um dentista na tabela hash. 
 * @param tabela: tabela hash que contém os dentistas.
 */
+
+void atender_paciente_dentista(TabelaHash *tabela);
+
 void *buscar_dentista(TabelaHash* tabela);
 
 /* Função que remove um dentista da tabela hash.
@@ -53,3 +58,5 @@ void remover_dentista();
 
 // Função criada para testes
 void mostrar_dentistas(TabelaHash* tabela);
+
+#endif
