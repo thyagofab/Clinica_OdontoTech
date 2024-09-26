@@ -1,4 +1,7 @@
 #include "../include/dentista.h"
+#include "../include/sistema.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 #define TAM 100
 

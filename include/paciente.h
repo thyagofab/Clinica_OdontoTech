@@ -1,3 +1,6 @@
+#ifndef PACIENTE_H
+#define PACIENTE_H
+
 typedef enum prioridade { Normal = 1, Preferencial, Emergencial} Prioridade;
 
 typedef struct paciente{
@@ -32,3 +35,5 @@ void inserir_Heap(Heap* heap, Paciente *paciente);
 void mostrar_pacientes(Heap* heap);
 
 Paciente *remover_paciente(Heap* heap); 
+
+#endif
