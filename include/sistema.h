@@ -1,3 +1,6 @@
+#ifndef SISTEMA_H
+#define SISTEMA_H
+
 void menu();
 
 void menu_dentista();
@@ -13,3 +16,5 @@ void menu_buscar_paciente();
 void menu_atenter_paciente();
 
 int definir_prioridade();
+
+#endif

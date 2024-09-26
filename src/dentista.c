@@ -1,4 +1,8 @@
 #include "../include/dentista.h"
+#include "../include/sistema.h"
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
 
 Dentista *adicionar_dentista(TabelaHash *tabela){
     char nome[100];
