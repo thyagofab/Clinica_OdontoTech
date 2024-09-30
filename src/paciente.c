@@ -31,10 +31,6 @@ void buscar_paciente(){
     menu_buscar_paciente();
 }
 
-void atender_paciente(Heap *heap){
-    remover_paciente(heap);
-}
-
 Heap *criar_Heap(){
 
     Heap *heap = (Heap*)malloc(sizeof(Heap));

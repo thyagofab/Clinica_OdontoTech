@@ -124,7 +124,7 @@ void atender_paciente_dentista(TabelaHash *tabela){
     }else{
         printf("Denstista encontrado!\n");
         system("pause");
-        atender_paciente(tabela->dentistas[indice]->filaPacientes);
+        remover_paciente(tabela->dentistas[indice]->filaPacientes);
     }
 }
 

@@ -20,7 +20,6 @@ typedef struct{
 */
 Dentista *adicionar_dentista();
 
-
 /* Função que cria uma tabela hash de acordo com o tamanho definido.
 * @param tamanho: tamanho da tabela hash.
 */
@@ -43,12 +42,14 @@ void inserir_dentista(TabelaHash *tabela, Dentista *dentista);
 */
 void adicionar_paciente_dentista(TabelaHash *tabela);
 
+/* Função que atende um paciente de um dentista.
+* @param tabela: tabela hash que contém os dentistas.
+*/
+void atender_paciente_dentista(TabelaHash *tabela);
+
 /* Função que busca um dentista na tabela hash. 
 * @param tabela: tabela hash que contém os dentistas.
 */
-
-void atender_paciente_dentista(TabelaHash *tabela);
-
 void *buscar_dentista(TabelaHash* tabela);
 
 /* Função que remove um dentista da tabela hash.
