@@ -20,21 +20,22 @@ typedef struct heap{
 */ 
 void *adicionar_paciente(Heap *heap);
 
+/*Função que insere um paciente na fila de espera de um dentista.
+ @param heap: fila de espera do dentista escolhido.
+ @param paciente: paciente a ser inserido.
+*/
+void inserir_Heap(Heap* heap, Paciente *paciente); 
+
 /*Função que busca um paciente na fila de espera de um dentista.
  @param heap: fila de espera do dentista escolhido.
 */
 void buscar_paciente();
 
-/*Função que cria uma fila de espera de pacientes para um dentista.
- @return: retorna um ponteiro para a fila de espera.
+/*Função que remove um paciente da fila de espera de um dentista.
+ @param heap: fila de espera do dentista escolhido.
+ @return: retorna um ponteiro para o paciente removido.
 */
-Heap *criar_Heap();
-
-/*Função que troca a posição de dois pacientes. Auxiliar para a função heapify_Acima.
- @param a: ponteiro para o primeiro paciente.
- @param b: ponteiro para o segundo paciente.
-*/
-void trocar_Pacientes(Paciente **a, Paciente **b); 
+Paciente *remover_paciente(Heap* heap); 
 
 /*Função que organiza a fila de espera de pacientes de acordo com a prioridade.
 Utilizada quando um paciente é adicionado à fila.
@@ -50,17 +51,16 @@ Utilizada quando um paciente é removido da fila.
 */
 void heapify_Abaixo(Heap *heap, int index); 
 
-/*Função que insere um paciente na fila de espera de um dentista.
- @param heap: fila de espera do dentista escolhido.
- @param paciente: paciente a ser inserido.
+/*Função que troca a posição de dois pacientes. Auxiliar para a função heapify_Acima.
+ @param a: ponteiro para o primeiro paciente.
+ @param b: ponteiro para o segundo paciente.
 */
-void inserir_Heap(Heap* heap, Paciente *paciente); 
+void trocar_Pacientes(Paciente **a, Paciente **b);
 
-/*Função que remove um paciente da fila de espera de um dentista.
- @param heap: fila de espera do dentista escolhido.
- @return: retorna um ponteiro para o paciente removido.
+/*Função que cria uma fila de espera de pacientes para um dentista.
+ @return: retorna um ponteiro para a fila de espera.
 */
-Paciente *remover_paciente(Heap* heap); 
+Heap *criar_Heap(); 
 
 // Função criada para testes
 void mostrar_pacientes(Heap* heap);
