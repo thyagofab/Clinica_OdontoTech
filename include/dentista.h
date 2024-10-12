@@ -50,6 +50,8 @@ void inserir_dentista(TabelaHash *tabela, Dentista *dentista);
 */
 void remover_dentista(TabelaHash *tabela);
 
+/* Função que inicializa uma tabela hash.
+*/
 TabelaHash *criar_TabelaHash(int tamanho);
 
 /* Função que calcula o hash de uma chave (CPF).

@@ -11,10 +11,8 @@ void *adicionar_paciente(Heap *heap){
     Prioridade prioridade;
 
     menu_paciente();
-    printf("Nome do paciente: ");
-    scanf(" %[^\n]", nome);
-    printf("Telefone do paciente: ");
-    scanf(" %[^\n]", telefone);
+    leia_nomes("Informe o nome: ", nome);
+    leia_telefone("Informe o telefone: ", telefone);
 
     prioridadeEscolhida = definir_prioridade();
 
@@ -45,8 +43,8 @@ void buscar_paciente(){
     menu_buscar_paciente();
 }
 
-Paciente *remover_paciente(Heap *heap) {
-    if (heap->tamanhoAtual == 0) {
+Paciente *remover_paciente(Heap *heap){
+    if (heap->tamanhoAtual == 0){
         printf("Não há pacientes para remover.\n");
         return NULL;
     }
