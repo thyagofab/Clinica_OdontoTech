@@ -21,7 +21,7 @@ int main(){
             break;
             
         case 2:
-            buscar_dentista(tabela);
+            buscar_dentista(tabela, "");
             break;
 
         case 3:
