@@ -7,11 +7,12 @@
 
 int main(){
     TabelaHash *tabela = criar_TabelaHash(TAM);
+    carregar_dentistas_pacientes(tabela);
     int opcao;
 
     do{
         menu();
-        scanf(" %d", &opcao);
+        leia_numeros("Digite uma opcao: ", &opcao);
 
         switch (opcao){
 
@@ -55,5 +56,7 @@ int main(){
         
     }while (opcao != 7);
     
+    salvar_dentistas_pacientes(tabela);
+
     return 0;
 }
