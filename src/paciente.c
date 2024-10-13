@@ -11,10 +11,8 @@ void *adicionar_paciente(Heap *heap){
     Prioridade prioridade;
 
     menu_paciente();
-    printf("Nome do paciente: ");
-    scanf(" %[^\n]", nome);
-    printf("Telefone do paciente: ");
-    scanf(" %[^\n]", telefone);
+    leia_nomes("Informe o nome: ", nome);
+    leia_telefone("Informe o telefone: ", telefone);
 
     prioridadeEscolhida = definir_prioridade();
 
@@ -25,65 +23,6 @@ void *adicionar_paciente(Heap *heap){
 
     inserir_Heap(heap, novoPaciente);
     printf("Paciente %s adicionado com sucesso!\n", nome);
-}
-
-void buscar_paciente(){
-    menu_buscar_paciente();
-}
-
-void atender_paciente(Heap *heap){
-    remover_paciente(heap);
-}
-
-Heap *criar_Heap(){
-
-    Heap *heap = (Heap*)malloc(sizeof(Heap));
-    
-    heap->capacidade = 10;
-    
-    heap->pacientes = (Paciente**)malloc(sizeof(Paciente*) *heap->capacidade);
-    
-    heap->tamanhoAtual = 0;
-    
-    return heap;
-}
-
-void trocar_Pacientes(Paciente **a, Paciente **b){
-    Paciente* temp = *a;
-    *a = *b;
-    *b = temp;
-}
-
-void heapify_Acima(Heap *heap, int index){
-    if (index == 0){
-        return;
-    } 
-    
-    int pai = (index - 1) / 2;  
-    
-    if (heap->pacientes[index]->prioridade > heap->pacientes[pai]->prioridade){    
-        trocar_Pacientes(&heap->pacientes[index], &heap->pacientes[pai]);
-        heapify_Acima(heap, pai);
-    }
-}
-
-void heapify_Abaixo(Heap *heap, int index){
-    int maiorFilho = index;
-    int esquerda = 2 * index + 1;  
-    int direita = 2 * index + 2;   
-
-    if (esquerda < heap->tamanhoAtual && heap->pacientes[esquerda]->prioridade > heap->pacientes[maiorFilho]->prioridade) {
-        maiorFilho = esquerda;
-    }
-
-    if (direita < heap->tamanhoAtual && heap->pacientes[direita]->prioridade > heap->pacientes[maiorFilho]->prioridade) {
-        maiorFilho = direita;
-    }
-
-    if (maiorFilho != index) {
-        trocar_Pacientes(&heap->pacientes[index], &heap->pacientes[maiorFilho]);
-        heapify_Abaixo(heap, maiorFilho);  
-    }
 }
 
 void inserir_Heap(Heap *heap, Paciente *paciente){
@@ -98,6 +37,74 @@ void inserir_Heap(Heap *heap, Paciente *paciente){
     heapify_Acima(heap, heap->tamanhoAtual);
 
     heap->tamanhoAtual++;
+}
+
+void buscar_paciente(){
+    menu_buscar_paciente();
+}
+
+Paciente *remover_paciente(Heap *heap){
+    if (heap->tamanhoAtual == 0){
+        printf("Não há pacientes para remover.\n");
+        return NULL;
+    }
+
+    Paciente *pacienteRemovido = heap->pacientes[0];
+
+    heap->pacientes[0] = heap->pacientes[--heap->tamanhoAtual];
+
+    heapify_Abaixo(heap, 0);
+
+    printf("Paciente %s foi atendido!\n", pacienteRemovido->nome);
+    return pacienteRemovido;
+}
+
+void heapify_Acima(Heap *heap, int indice){
+    if (indice == 0){
+        return;
+    } 
+    
+    int pai = (indice - 1) / 2;  
+    
+    if (heap->pacientes[indice]->prioridade > heap->pacientes[pai]->prioridade){    
+        trocar_Pacientes(&heap->pacientes[indice], &heap->pacientes[pai]);
+        heapify_Acima(heap, pai);
+    }
+}
+
+void heapify_Abaixo(Heap *heap, int indice){
+    int maiorFilho = indice;
+    int esquerda = 2 * indice + 1;  
+    int direita = 2 * indice + 2;   
+
+    if (esquerda < heap->tamanhoAtual && heap->pacientes[esquerda]->prioridade > heap->pacientes[maiorFilho]->prioridade) {
+        maiorFilho = esquerda;
+    }
+
+    if (direita < heap->tamanhoAtual && heap->pacientes[direita]->prioridade > heap->pacientes[maiorFilho]->prioridade) {
+        maiorFilho = direita;
+    }
+
+    if (maiorFilho != indice) {
+        trocar_Pacientes(&heap->pacientes[indice], &heap->pacientes[maiorFilho]);
+        heapify_Abaixo(heap, maiorFilho);  
+    }
+}
+
+void trocar_Pacientes(Paciente **a, Paciente **b){
+    Paciente* temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+Heap *criar_Heap(){
+    Heap *heap = (Heap*)malloc(sizeof(Heap));
+    
+    heap->capacidade = 10;
+    heap->pacientes = (Paciente**)malloc(sizeof(Paciente*) *heap->capacidade);    
+    heap->tamanhoAtual = 0;
+
+    return heap;
 }
 
 void mostrar_pacientes(Heap *heap){
@@ -117,20 +124,4 @@ void mostrar_pacientes(Heap *heap){
     }
     system("pause");
     printf("\n");
-}
-
-Paciente *remover_paciente(Heap *heap) {
-    if (heap->tamanhoAtual == 0) {
-        printf("Não há pacientes para remover.\n");
-        return NULL;
-    }
-
-    Paciente *pacienteRemovido = heap->pacientes[0];
-
-    heap->pacientes[0] = heap->pacientes[--heap->tamanhoAtual];
-
-    heapify_Abaixo(heap, 0);
-
-    printf("Paciente %s foi atendido!\n", pacienteRemovido->nome);
-    return pacienteRemovido;
 }

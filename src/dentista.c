@@ -4,19 +4,15 @@
 #include <stdio.h>
 #include <string.h>
 
-Dentista *adicionar_dentista(TabelaHash *tabela){
+void *adicionar_dentista(TabelaHash *tabela){
     char nome[100];
     char cpf[12];
     char especialidade[100];
 
-    menu_dentista();
-    
-    printf("Digite o nome do dentista: ");
-    scanf(" %[^\n]", nome);
-    printf("Digite o CPF do dentista: ");
-    scanf(" %[^\n]", cpf);
-    printf("Digite a especialidade do dentista: ");
-    scanf(" %[^\n]", especialidade);
+    menu_dentista(); 
+    leia_nomes("Informe o nome: ", nome);
+    leia_cpf("Digite o CPF do dentista: ", cpf);
+    leia_nomes("Especialidade do dentista: ", especialidade);
 
     Dentista *novoDentista = (Dentista*)malloc(sizeof(Dentista));
 
@@ -33,8 +29,7 @@ void adicionar_paciente_dentista(TabelaHash *tabela){
     char cpf[12];
     int indice;
 
-    printf("Digite o CPF do dentista: ");
-    scanf(" %[^\n]", cpf);
+    leia_cpf("Digite o CPF do dentista: ", cpf);
 
     indice = hash(cpf, tabela->tamanho);
 
@@ -42,17 +37,37 @@ void adicionar_paciente_dentista(TabelaHash *tabela){
         printf("Dentista não encontrado!\n");
 
     }else{
+        printf("Denstista encontrado!\n");
+        system("pause");
         adicionar_paciente(tabela->dentistas[indice]->filaPacientes);
     }
 }
+
+void atender_paciente_dentista(TabelaHash *tabela){
+    char cpf[12];
+    int indice;
+
+    menu_atenter_paciente();
+    leia_cpf("Digite o CPF do dentista: ", cpf);
+
+    indice = hash(cpf, tabela->tamanho);
+
+    if(tabela->dentistas[indice] == NULL){
+        printf("Dentista não encontrado!\n");
+
+    }else{
+        printf("Denstista encontrado!\n");
+        system("pause");
+        remover_paciente(tabela->dentistas[indice]->filaPacientes);
+    }
+} 
 
 void *buscar_dentista(TabelaHash *tabela){
     char cpf[12];
     int indice;
 
     menu_buscar_dentista();
-    printf("Digite o CPF do dentista: ");
-    scanf(" %[^\n]", cpf);
+    leia_cpf("Digite o CPF do dentista: ", cpf);
 
     indice = hash(cpf, tabela->tamanho);
 
@@ -62,17 +77,25 @@ void *buscar_dentista(TabelaHash *tabela){
 
     }else{
         printf("Dentista encontrado!\n");
+        printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
+        printf("========== DENTISTA  ==========\n");
         printf("Nome: %s\n", tabela->dentistas[indice]->nome);
         printf("CPF: %s\n", tabela->dentistas[indice]->cpf);
+        printf("Especialidade: %s\n", tabela->dentistas[indice]->especialidade);
+        printf("===============================\n");
     }
+}
+
+void inserir_dentista(TabelaHash *tabela, Dentista *dentista){
+    int indice = hash(dentista->cpf, tabela->tamanho);
+    tabela->dentistas[indice] = dentista;
 }
 
 void remover_dentista(TabelaHash *tabela){
     char cpf[12];
 
     menu_remover_dentista();
-    printf("Digite o CPF do dentista: ");
-    scanf(" %[^\n]", cpf);
+    leia_cpf("Digite o CPF do dentista: ", cpf);
 
     int indice = hash(cpf, tabela->tamanho);
 
@@ -80,9 +103,15 @@ void remover_dentista(TabelaHash *tabela){
         printf("Dentista não encontrado!\n");
 
     }else{
+
+        if(tabela->dentistas[indice]->filaPacientes->tamanhoAtual > 0){
+            printf("O dentista ainda possui pacientes na fila de espera!\n");
+            return;
+        }
+
         free(tabela->dentistas[indice]);
         tabela->dentistas[indice] = NULL;
-        printf("Dentista removido com sucesso!\n");
+        printf("Dentista %s removido com sucesso!\n", tabela->dentistas[indice]->nome);
     }
 }
 
@@ -101,31 +130,6 @@ int hash(char *chave, int tamanho){
     }
 
     return soma % tamanho; 
-}
-
-void inserir_dentista(TabelaHash *tabela, Dentista *dentista){
-    int indice = hash(dentista->cpf, tabela->tamanho);
-    tabela->dentistas[indice] = dentista;
-}
-
-void atender_paciente_dentista(TabelaHash *tabela){
-    char cpf[12];
-    int indice;
-
-    menu_atenter_paciente();
-    printf("Digite o CPF do dentista: ");
-    scanf(" %[^\n]", cpf);
-
-    indice = hash(cpf, tabela->tamanho);
-
-    if(tabela->dentistas[indice] == NULL){
-        printf("Dentista não encontrado!\n");
-
-    }else{
-        printf("Denstista encontrado!\n");
-        system("pause");
-        atender_paciente(tabela->dentistas[indice]->filaPacientes);
-    }
 }
 
 void mostrar_dentistas(TabelaHash *tabela){
