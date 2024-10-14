@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "paciente.h": "c",
+        "dentista.h": "c"
+    }
+}

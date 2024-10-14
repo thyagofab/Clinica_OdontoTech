@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define TAM 100
+#define TAM 10
 
 int main(){
     TabelaHash *tabela = criar_TabelaHash(TAM);
