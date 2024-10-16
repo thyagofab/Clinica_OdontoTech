@@ -66,13 +66,14 @@ void leia_cpf(char *texto, char *cpf);
 
 /*Função que salva os dentistas e pacientes em um arquivo.
  @param tabela: ponteiro para a tabela hash que contém os dentistas.
+ @param cpf: CPF do dentista.
 */
 void salvar_dentistas_pacientes(TabelaHash *tabela);
 
 /*Função que carrega os dentistas e pacientes de um arquivo.
  @param tabela: ponteiro para a tabela hash que contém os dentistas.
 */
-void carregar_dentistas_pacientes(TabelaHash *tabela);
+void carregar_dentistas_pacientes(TabelaHash *tabela, NoAVL **arvorePacientes);
 
 /*Função auxiliar que cria um dentista.
  @param nome: nome do dentista.

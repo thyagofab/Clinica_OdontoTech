@@ -3,12 +3,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define TAM 10
+#define TAM 100
 
 int main(){
     TabelaHash *tabela = criar_TabelaHash(TAM);
-    carregar_dentistas_pacientes(tabela);
+    NoAVL *arvorePacientes;
     int opcao;
+
+    inicializar_AVL(&arvorePacientes);
+    carregar_dentistas_pacientes(tabela, &arvorePacientes);
 
     do{
         menu();
@@ -29,15 +32,15 @@ int main(){
             break;
 
         case 4:
-            adicionar_paciente_dentista(tabela);
+            adicionar_paciente_dentista(tabela, &arvorePacientes);
             break;
 
         case 5: 
-            atender_paciente_dentista(tabela);
+            atender_paciente_dentista(tabela, &arvorePacientes);
             break;
 
         case 6:
-            buscar_paciente();  // Não implementada
+            buscar_paciente(arvorePacientes);  
             break;
 
         case 7:
@@ -45,9 +48,13 @@ int main(){
             break;
             
         case 8:
-            mostrar_dentistas(tabela);  // Função criada para testes: mostrar dentistas e seus pacientes
+            mostrar_dentistas(tabela);  
             break;
 
+        case 9:
+            listar_InOrder(arvorePacientes);
+            break;
+            
         default:
             printf("opcao invalida!\n");
             system("cls");
