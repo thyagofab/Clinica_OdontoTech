@@ -34,16 +34,17 @@ void atender_paciente_dentista(TabelaHash *tabela);
 * @param tamanho: tamanho da tabela hash.
 */
 
-/* Função que busca um dentista na tabela hash. 
+/* Função que busca um dentista na tabela hash.
 * @param tabela: tabela hash que contém os dentistas.
+* @param cpf: CPF do dentista a ser buscado.
 */
-void *buscar_dentista(TabelaHash* tabela);
+void *buscar_dentista(TabelaHash* tabela, char *cpf);
 
 /* Função que insere um dentista na tabela hash.
 * @param tabela: tabela hash que contém os dentistas.
 * @param dentista: dentista a ser inserido.
 */
-void inserir_dentista(TabelaHash *tabela, Dentista *dentista); 
+int inserir_dentista(TabelaHash *tabela, Dentista *dentista); 
 
 /* Função que remove um dentista da tabela hash.
 * @param tabela: tabela hash que contém os dentistas.

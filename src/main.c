@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define TAM 100
+#define TAM 10
 
 int main(){
     TabelaHash *tabela = criar_TabelaHash(TAM);
@@ -21,7 +21,7 @@ int main(){
             break;
             
         case 2:
-            buscar_dentista(tabela);
+            buscar_dentista(tabela, "");
             break;
 
         case 3:
