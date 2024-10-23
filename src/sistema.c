@@ -135,6 +135,7 @@ void leia_nomes(char *texto, char *nome){
             }
         }
     }
+    strupr(nome);
 }
 
 void leia_numeros(char *texto, int *numero){
@@ -224,7 +225,7 @@ void salvar_dentistas_pacientes(TabelaHash *tabela) {
 
     for (i = 0; i < tabela->tamanho; i++) {
         if (tabela->dentistas[i] != NULL) {
-            fprintf(arquivo, "%s %s %s\n", tabela->dentistas[i]->nome, tabela->dentistas[i]->cpf, tabela->dentistas[i]->especialidade);
+            fprintf(arquivo, "%s %s\t %s\n", tabela->dentistas[i]->nome, tabela->dentistas[i]->cpf, tabela->dentistas[i]->especialidade);
 
             fprintf(arquivo, "%d\n", tabela->dentistas[i]->filaPacientes->tamanhoAtual);
 
@@ -239,10 +240,10 @@ void salvar_dentistas_pacientes(TabelaHash *tabela) {
     fclose(arquivo);
 }
 
-void carregar_dentistas_pacientes(TabelaHash *tabela) {
+void carregar_dentistas_pacientes(TabelaHash *tabela, NoAVL **arvorePacientes){
     FILE *arquivo;
     char nome[100], cpf[12], especialidade[100], telefone[10];
-    int i, j, prioridade, tamanhoFila;
+    int i, prioridade, tamanhoFila;
 
     arquivo = fopen("dentistas_pacientes.txt", "r");
 
@@ -251,23 +252,27 @@ void carregar_dentistas_pacientes(TabelaHash *tabela) {
         return;
     }
 
-     while (fscanf(arquivo, "%s %s %s", nome, cpf, especialidade) == 3) {
+    while (fscanf(arquivo, "%s %[^\t] %[^\n]", nome, cpf, especialidade) == 3) {
         Dentista *dentista = criar_dentista(nome, cpf, especialidade);
         inserir_dentista(tabela, dentista);
 
-        fscanf(arquivo, "%d", &tamanhoFila);
+        fscanf(arquivo, "%d", &tamanhoFila);  
 
         for (i = 0; i < tamanhoFila; i++) {
             fscanf(arquivo, "%s %s %d", nome, telefone, &prioridade);
             Paciente *paciente = criar_paciente(nome, telefone, prioridade);
+
             inserir_Heap(dentista->filaPacientes, paciente); 
+
+            *arvorePacientes = inserir_paciente_AVL(*arvorePacientes, paciente); 
         }
     }
 
     fclose(arquivo);
 }
 
-Dentista *criar_dentista(char *nome, char *cpf, char *especialidade) {
+
+Dentista *criar_dentista(char *nome, char *cpf, char *especialidade){
         Dentista *novoDentista = (Dentista *)malloc(sizeof(Dentista));
         strcpy(novoDentista->nome, nome);
         strcpy(novoDentista->cpf, cpf);
