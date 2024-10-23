@@ -84,18 +84,20 @@ void *buscar_dentista(TabelaHash *tabela, char *cpf){
                 return NULL;
             }
 
-            if (indice == indice_inicial){
-                printf("Dentista não encontrado!\n");
-                return NULL;
-            }
         }
         indice = (indice + 1) % tabela->tamanho;
     }
+
+    if (indice == indice_inicial){
+        printf("Dentista não encontrado!\n");
+        return NULL;
+    }
+    
     printf("Dentista não encontrado!\n");
     return NULL;
 }
 
-void adicionar_paciente_dentista(TabelaHash *tabela){
+void adicionar_paciente_dentista(TabelaHash *tabela, NoAVL **arvorePacientes){
     char cpf[12];
 
     leia_cpf("Digite o CPF do dentista: ", cpf);
@@ -105,11 +107,11 @@ void adicionar_paciente_dentista(TabelaHash *tabela){
     if (dentista == NULL){
         printf("Dentista não encontrado!\n");
     } else{
-        adicionar_paciente(dentista->filaPacientes);
+        adicionar_paciente(dentista->filaPacientes, arvorePacientes);
     }
 }
 
-void atender_paciente_dentista(TabelaHash *tabela){
+void atender_paciente_dentista(TabelaHash *tabela, NoAVL **arvorePacientes){
     char cpf[12];
     int indice;
 
@@ -120,15 +122,17 @@ void atender_paciente_dentista(TabelaHash *tabela){
 
     while (tabela->dentistas[indice] != NULL){
         if (strcmp(tabela->dentistas[indice]->cpf, cpf) == 0){
-            remover_paciente(tabela->dentistas[indice]->filaPacientes);
+            remover_paciente(tabela->dentistas[indice]->filaPacientes, arvorePacientes);
+            remover_paciente_AVL(*arvorePacientes, cpf);
             return;
         }
 
         indice = (indice + 1) % tabela->tamanho;
     }
+    printf("Dentista não encontrado!\n");
 }
 
-void remover_dentista(TabelaHash *tabela) {
+void remover_dentista(TabelaHash *tabela){
     char cpf[12];
 
     menu_remover_dentista();
@@ -136,12 +140,12 @@ void remover_dentista(TabelaHash *tabela) {
 
     Dentista *dentista = buscar_dentista(tabela, cpf);
 
-    if (dentista == NULL) {
+    if (dentista == NULL){
         printf("Dentista não encontrado!\n");
         return;
     }
 
-    if (dentista->filaPacientes->tamanhoAtual > 0) {
+    if (dentista->filaPacientes->tamanhoAtual > 0){
         printf("O dentista ainda possui pacientes na fila de espera!\n");
         return;
     }

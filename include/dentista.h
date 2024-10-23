@@ -2,6 +2,7 @@
 #define DENTISTA_H
 #include "../include/paciente.h"
 
+// Estrutura de um dentista
 typedef struct{
     char nome[100];
     char cpf[12];  
@@ -9,6 +10,7 @@ typedef struct{
     Heap *filaPacientes;  
 } Dentista;
 
+// Estrutura de uma tabela hash de dentistas
 typedef struct{
     Dentista **dentistas;  
     int tamanho;
@@ -22,16 +24,20 @@ void *adicionar_dentista(TabelaHash *tabela);
 
 /* Função que adiciona um paciente a um dentista.
 * @param tabela: tabela hash que contém os dentistas.
+* @param arvorePacientes: Ponteiro para a árvore AVL de pacientes.
 */
-void adicionar_paciente_dentista(TabelaHash *tabela);
+void adicionar_paciente_dentista(TabelaHash *tabela, NoAVL **arvorePacientes);
 
 /* Função que atende um paciente de um dentista.
 * @param tabela: tabela hash que contém os dentistas.
+* @param arvorePacientes: Ponteiro para a árvore AVL de pacientes.
 */
-void atender_paciente_dentista(TabelaHash *tabela);
+void atender_paciente_dentista(TabelaHash *tabela, NoAVL **arvorePacientes);
 
 /* Função que cria uma tabela hash de acordo com o tamanho definido.
 * @param tamanho: tamanho da tabela hash.
+* @param arvorePacientes: Ponteiro para a árvore AVL de pacientes.
+* @return: retorna um ponteiro para a tabela hash.
 */
 
 /* Função que busca um dentista na tabela hash.
@@ -48,6 +54,7 @@ int inserir_dentista(TabelaHash *tabela, Dentista *dentista);
 
 /* Função que remove um dentista da tabela hash.
 * @param tabela: tabela hash que contém os dentistas.
+* @param dentista: dentista a ser inserido.
 */
 void remover_dentista(TabelaHash *tabela);
 
