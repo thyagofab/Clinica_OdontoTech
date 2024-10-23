@@ -69,9 +69,7 @@ Clínica_OdontoTech/
 │   ├── 👨‍⚕️ paciente.c            
 │   ├── ⚙️ sistema.c              
 │   └── 💻 main.c                 
-│
-├── 📁 output/                    
-│   └── 🛠 main.exe               
+│              
 │
 ├── 🚫 .gitignore
 └── 📄 README.md                 
@@ -102,6 +100,35 @@ typedef struct{
     Dentista **dentistas;  
     int tamanho;
 } TabelaHash;
+
+```
+
+### Inserção de Dentista com Tratamento de Colisões em Tabela Hash
+<p>
+  A função inserir_dentista é utilizada para inserir um novo dentista em uma tabela hash. O algoritmo de hash usa o CPF do dentista como chave para calcular o índice em que o dentista será armazenado. Caso haja uma colisão (dois CPFs que resultam no mesmo índice), a função aplica a técnica de sondagem linear para encontrar o próximo índice disponível. Além disso, a função verifica se o CPF já existe na tabela, retornando diferentes códigos de erro conforme o resultado da operação.
+</p>
+
+```
+int inserir_dentista(TabelaHash *tabela, Dentista *dentista){
+    int indice = hash(dentista->cpf, tabela->tamanho);
+    int indice_inicial = indice;  
+    
+    while (tabela->dentistas[indice] != NULL){
+        if (strcmp(tabela->dentistas[indice]->cpf, dentista->cpf) == 0){
+            return 1;
+        }
+
+        indice = (indice + 1) % tabela->tamanho;
+
+        if (indice == indice_inicial){
+            printf("Tabela hash está cheia.\n");
+            return 2;
+        }
+    }
+
+    tabela->dentistas[indice] = dentista;
+    return 0;
+}
 
 ```
 
@@ -178,8 +205,6 @@ void trocar_Pacientes(Paciente **a, Paciente **b){
 }
 
 ```
-
-
 
 
 
