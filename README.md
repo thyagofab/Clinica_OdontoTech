@@ -103,9 +103,69 @@ typedef struct{
 
 ```
 
+### AVL
+<p>A estrutura `NoAVL` é usada para representar um nó de uma árvore AVL, uma árvore binária de busca autobalanceada. Cada nó contém informações sobre um paciente, além de ponteiros para os nós esquerdo e direito da árvore, e um valor que armazena a altura do nó. A árvore AVL mantém-se balanceada automaticamente durante as inserções e remoções, garantindo eficiência nas operações de busca, inserção e exclusão.</p>
+
+```
+typedef struct NoAVL {
+    Paciente *paciente;        
+    struct NoAVL *esq;         
+    struct NoAVL *dir;         
+    int alt;                   
+} NoAVL;
+
+```
+
+### Inserção de Paciente em AVL
+
+<p>
+A função inserir_paciente_AVL é responsável por inserir um novo paciente em uma árvore AVL, mantendo o balanceamento da árvore após a inserção. A AVL é uma árvore binária de busca autobalanceada, onde a diferença entre as alturas das subárvores de qualquer nó é no máximo 1. Caso a inserção cause um desequilíbrio, as rotações necessárias são realizadas para restaurar o balanceamento da árvore.
+</p>
+
+```
+NoAVL *inserir_paciente_AVL(NoAVL *no, Paciente *paciente){
+    if (no == NULL) {
+        return criar_NoAVL(paciente);  
+    }
+
+    if (strcmp(paciente->nome, no->paciente->nome) < 0){
+        no->esq = inserir_paciente_AVL(no->esq, paciente);
+    } else if (strcmp(paciente->nome, no->paciente->nome) > 0){
+        no->dir = inserir_paciente_AVL(no->dir, paciente);
+    } else {
+        return no;  
+    }
+
+    no->alt = 1 + fmax(altura_No(no->esq), altura_No(no->dir));
+
+    int bal = balanceamento(no);
+
+    if (bal > 1 && strcmp(paciente->nome, no->esq->paciente->nome) < 0){
+        return rotacao_direita(no);
+    }
+
+    if (bal < -1 && strcmp(paciente->nome, no->dir->paciente->nome) > 0){
+        return rotacao_esquerda(no);
+    }
+
+    if (bal > 1 && strcmp(paciente->nome, no->esq->paciente->nome) > 0){
+        no->esq = rotacao_esquerda(no->esq);
+        return rotacao_direita(no);
+    }
+
+    if (bal < -1 && strcmp(paciente->nome, no->dir->paciente->nome) < 0){
+        no->dir = rotacao_direita(no->dir);
+        return rotacao_esquerda(no);
+    }
+
+    return no;
+}
+
+```
+
 ### Inserção de Dentista com Tratamento de Colisões em Tabela Hash
 <p>
-  A função inserir_dentista é utilizada para inserir um novo dentista em uma tabela hash. O algoritmo de hash usa o CPF do dentista como chave para calcular o índice em que o dentista será armazenado. Caso haja uma colisão (dois CPFs que resultam no mesmo índice), a função aplica a técnica de sondagem linear para encontrar o próximo índice disponível. Além disso, a função verifica se o CPF já existe na tabela, retornando diferentes códigos de erro conforme o resultado da operação.
+A função inserir_dentista é utilizada para inserir um novo dentista em uma tabela hash. O algoritmo de hash usa o CPF do dentista como chave para calcular o índice em que o dentista será armazenado. Caso haja uma colisão (dois CPFs que resultam no mesmo índice), a função aplica a técnica de sondagem linear para encontrar o próximo índice disponível. Além disso, a função verifica se o CPF já existe na tabela, retornando diferentes códigos de erro conforme o resultado da operação.
 </p>
 
 ```
